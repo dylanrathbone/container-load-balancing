@@ -1,0 +1,15 @@
+{
+  "name": "kubernetes-playground",
+  "version": "1.0.0",
+  "description": "A small project to showcase Docker and Kubernetes ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dylan Rathbone",
+  "license": "ISC",
+  "dependencies": {
+    "google-geolocation": "^1.0.1",
+    "restify": "^4.3.0"
+  }
+}

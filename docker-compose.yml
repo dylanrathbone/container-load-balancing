@@ -1,0 +1,52 @@
+version: '2'
+
+networks:
+  main:
+
+services:
+  api_1:
+    image: node:7.4.0
+    depends_on:
+      - nginx
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    networks:
+      - main
+    ports:
+      - "8081:10010"
+    environment:
+      MESSAGE: API1
+      PORT: "10010"
+    command:
+      /bin/bash -c
+       "npm install &&
+       node app.js"
+  api_2:
+    image: node:7.4.0
+    depends_on:
+      - nginx
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    networks:
+      - main
+    ports:
+      - "8082:10010"
+    environment:
+      MESSAGE: API2
+      PORT: "10010"
+    command:
+      /bin/bash -c
+       "npm install &&
+       node app.js"
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - main
+    ports:
+      - "8080:80"
